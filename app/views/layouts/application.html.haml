@@ -1,0 +1,74 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ChatSpace
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %div.notification
+      %p.announce チャットグループが作成されました。
+    %div.wrapper
+      %div.side-bar
+        %div.header
+          %h3.header__name SEO
+          %a(href='#link')
+            = fa_icon("pencil-square")
+          %a(href='#link')
+            = fa_icon("cog")
+        %div.groups
+          %div.group
+            %a.group(href='#link')
+              %div.group__name Sample_name1
+              %div.group__message Sample_message1
+          %div.group
+            %a.group(href='#link')
+              %div.group__name Sample_name2
+              %div.group__message Sample_message2
+          %div.group
+            %a.group(href='#link')
+              %div.group__name Sample_name3
+              %div.group__message Sample_message3
+          %div.group
+            %a.group(href='#link')
+              %div.group__name Sample_name4
+              %div.group__message Sample_message4
+      %div.chat
+        %div.header
+          %div.left-header
+            %div.left-header__title Title
+            %ul.left-header__members members...
+            %li.member member--------------
+          %div.right-header
+            %a.right-header__button(href='#link') Edit
+        %div.messages
+          %div.message
+            %div.upper-message
+              %div.upper-message__name Ryosukemaehira
+              %div.upper-message__date 2018/05/10 14:06
+            %div.lower-message test_test_test
+          %div.message
+            %div.upper-message
+              %div.upper-message__name Ryosukemaehira
+              %div.upper-message__date 2018/05/10 14:06
+            %div.lower-message test_test_test
+          %div.message
+            %div.upper-message
+              %div.upper-message__name Ryosukemaehira
+              %div.upper-message__date 2018/05/10 14:06
+            %div.lower-message test_test_test
+          %div.message
+            %div.upper-message
+              %div.upper-message__name Ryosukemaehira
+              %div.upper-message__date 2018/05/10 14:06
+            %div.lower-message test_test_test
+        %div.bottom__bar
+          %form.form
+            %input.form__message(placeholder='type a message')
+            %div.form__mask
+              %a(href='#link')
+                = fa_icon("image")
+            %button.button__send Send
+    / = render partial: 'layouts/flash'
+    = yield
