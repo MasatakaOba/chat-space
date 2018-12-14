@@ -1,10 +1,6 @@
 @import "./reset";
 @import "font-awesome";
 
-/*
- *= require font-awesome
- */
-
 .notification{
   position:fixed;
   top:0;
@@ -133,12 +129,6 @@
       }
     }
   }
-  // .message-background{
-  //   position: absolute;
-
-  //   width: calc(100vh - 100px);
-
-  // }
   .messages{
     position: fixed;
     left:300px;
