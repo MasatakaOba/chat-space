@@ -34,38 +34,38 @@
             %div.group__message Sample_message4
     %div.chat
       %div.header
-        %div.left-header
-          %div.left-header__title Title
-          %ul.left-header__members members...
-          %li.member member--------------
-        %div.right-header
-          %a.right-header__button(href='#link') Edit
+        %div.header--left
+          %div.header--left__title Title
+          %ul.header--left__members members...
+          %li.header--left__member member--------------
+        %div.header--right
+          %a.header--right__button(href='#link') Edit
       %div.messages
         %div.message
-          %div.upper-message
-            %div.upper-message__name Ryosukemaehira
-            %div.upper-message__date 2018/05/10 14:06
-          %div.lower-message test_test_test
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
         %div.message
-          %div.upper-message
-            %div.upper-message__name Ryosukemaehira
-            %div.upper-message__date 2018/05/10 14:06
-          %div.lower-message test_test_test
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
         %div.message
-          %div.upper-message
-            %div.upper-message__name Ryosukemaehira
-            %div.upper-message__date 2018/05/10 14:06
-          %div.lower-message test_test_test
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
         %div.message
-          %div.upper-message
-            %div.upper-message__name Ryosukemaehira
-            %div.upper-message__date 2018/05/10 14:06
-          %div.lower-message test_test_test
-      %div.bottom__bar
-        %form.form
-          %input.form__message(placeholder='type a message')
-          %div.form__mask
-            %a(href='#link')
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
+      %div.btmBar
+        %form.btmBar--form
+          %input.btmBar--form__message(placeholder='type a message')
+          %div.btmBar--form__mask
+            %a.btmBar--form__mask__image(href='#link')
               = fa_icon("image")
-          %button.button__send Send
+          %button.btmBar--form__button Send
   = yield
