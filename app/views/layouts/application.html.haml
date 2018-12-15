@@ -1,0 +1,71 @@
+%head
+  %meta{content: "text/html; charset=UTF-8", http: {equiv: "Content-Type"}}
+  %title ChatSpace
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+%body
+  %div.notification
+    %p.announce チャットグループが作成されました。
+  %div.wrapper
+    %div.side-bar
+      %div.header
+        %h3.header__name SEO
+        %a(href='#link')
+          = fa_icon("pencil-square")
+        %a(href='#link')
+          = fa_icon("cog")
+      %div.groups
+        %div.group
+          %a.group(href='#link')
+            %div.group__name Sample_name1
+            %div.group__message Sample_message1
+        %div.group
+          %a.group(href='#link')
+            %div.group__name Sample_name2
+            %div.group__message Sample_message2
+        %div.group
+          %a.group(href='#link')
+            %div.group__name Sample_name3
+            %div.group__message Sample_message3
+        %div.group
+          %a.group(href='#link')
+            %div.group__name Sample_name4
+            %div.group__message Sample_message4
+    %div.chat
+      %div.header
+        %div.header--left
+          %div.header--left__title Title
+          %ul.header--left__members members...
+          %li.header--left__member member--------------
+        %div.header--right
+          %a.header--right__button(href='#link') Edit
+      %div.messages
+        %div.message
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
+        %div.message
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
+        %div.message
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
+        %div.message
+          %div.message--upper
+            %div.message--upper__name Ryosukemaehira
+            %div.message--upper__date 2018/05/10 14:06
+          %div.message--lower test_test_test
+      %div.btmBar
+        %form.btmBar--form
+          %input.btmBar--form__message(placeholder='type a message')
+          %div.btmBar--form__mask
+            %a.btmBar--form__mask__image(href='#link')
+              = fa_icon("image")
+          %button.btmBar--form__button Send
+  = yield
