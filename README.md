@@ -37,7 +37,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text||
+|content|text||
 |image|text||
 |crated_at|datetime||
 |update_at|datetime||
