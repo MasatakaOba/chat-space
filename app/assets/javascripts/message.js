@@ -1,8 +1,4 @@
 $(function(){
- function scrollAuto() {
-  $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow')
-  }
-  scrollAuto()
   function buildHTML(message){
     var image = message.image ? `<img src="${message.image}"> ` : ""
     var html = `<div class='message data-message-id'>
@@ -21,7 +17,6 @@ $(function(){
                 </div>`
     return html;
   }
-
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -39,7 +34,10 @@ $(function(){
        $('.messages').append(html)
        $('.form__message').val('')
        $('.form__submit').prop('disabled', false);
-       scrollAuto()
+       function scrollAuto() {
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow')
+        }
+        scrollAuto()
      })
      .fail(function(){
         alert('送信に失敗しました');
@@ -47,3 +45,7 @@ $(function(){
     })
   })
 });
+
+
+
+

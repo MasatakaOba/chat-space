@@ -9,9 +9,7 @@
       %li.list
         = link_to edit_users_path do
           = fa_icon 'cog', class: 'icon'
-      %li.list
-        = link_to destroy_user_session_path do
-          = "ログアウト"
+      = link_to 'サインアウト', destroy_user_session_path, method: :delete
   .groups
     .group
       - current_user.groups.each do |group|
