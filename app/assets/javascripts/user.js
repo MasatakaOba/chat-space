@@ -43,8 +43,8 @@ $(function() {
   });
 
   $('#user-search-result').on('click', '.user-search-add', function() {
-    var name = $(this).data('user-name');
-    var id = $(this).data('user-id');
+    var name = $(this).attr('data-user-name');
+    var id = $(this).attr('data-user-id');
     var html = appendMember(name, id);
     $('.chat-group-user__name--member').append(html)
     $('#user-search-result').empty();
