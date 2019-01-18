@@ -1,4 +1,7 @@
 $(function(){
+  function scrollAuto() {
+  $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow')
+  }
   function buildHTML(message){
     var image = message.image ? `<img src="${message.image}"> ` : ""
     var html = `<div class='message data-message-id'>
@@ -34,9 +37,6 @@ $(function(){
        $('.messages').append(html)
        $('.form__message').val('')
        $('.form__submit').prop('disabled', false);
-       function scrollAuto() {
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow')
-        }
         scrollAuto()
      })
      .fail(function(){
