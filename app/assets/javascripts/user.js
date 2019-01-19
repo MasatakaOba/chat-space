@@ -29,7 +29,7 @@ $(function() {
       $('#user-search-result').empty();
       if (users.length !== 0) {
         users.forEach(function(user) {
-          var html = appendUser(user);
+          var html = appendUserHTML(user);
           $('#user-search-result').append(html)
         });
       }
@@ -45,7 +45,7 @@ $(function() {
   $('#user-search-result').on('click', '.user-search-add', function() {
     var name = $(this).attr('data-user-name');
     var id = $(this).attr('data-user-id');
-    var html = appendMember(name, id);
+    var html = appendMemberHTML(name, id);
     $('.chat-group-user__name--member').append(html)
     $('#user-search-result').empty();
   });
