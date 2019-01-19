@@ -1,5 +1,5 @@
 $(function(){
-  function scrollAuto() {
+  function autoScrollToNewestMessage() {
   $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow')
   }
   function buildHTML(message){
@@ -37,7 +37,7 @@ $(function(){
        $('.messages').append(html)
        $('.form__message').val('')
        $('.form__submit').prop('disabled', false);
-        scrollAuto()
+       autoScrollToNewestMessage()
      })
      .fail(function(){
         alert('送信に失敗しました');
