@@ -4,13 +4,17 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json {@latest_messages = @messages.where('group_id', params[:keyword])}
+    end
   end
 
   def create
     @message = @group.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
+        format.html {redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'}
         format.json
       end
     else
@@ -18,6 +22,10 @@ class MessagesController < ApplicationController
       flash.now[:alert] = 'メッセージを入力してください。'
       render :index
     end
+  end
+
+  def reload
+    @groupMessages = Message.where("group_id", "%#{params[:keyword]}%").limit(1)
   end
 
   private
