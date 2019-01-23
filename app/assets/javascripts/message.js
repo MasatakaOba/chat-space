@@ -4,7 +4,7 @@ $(function(){
   }
   function buildHTML(message){
     var image = message.image ? `<img src="${message.image}"> ` : ""
-    var html = `<div class='message'>
+    var html = `<div class='message' data-messageId="${message.id}">
                   <div class='upper-message'>
                     <div class='upper-message__user-name'>
                       ${message.user_name}
@@ -22,55 +22,45 @@ $(function(){
                 </div>`
     return html;
   }
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
-    var href = location.href
+  var loadMessages = function(){
+    var messageId = $('.message:last').attr('data-messageId');
     $.ajax({
-      url: href,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-     .done(function(data){
-       var html = buildHTML(data);
-       $('.messages').append(html)
-       $('.form__message').val('')
-       $('.form__submit').prop('disabled', false);
-       autoScrollToNewestMessage()
-     })
-     .fail(function(){
-        alert('送信に失敗しました');
-        $('.form__submit').prop('disabled', false);
-    })
-  })
-  var reloadMessages = function(){
-    var pathName = location.pathname;
-    if (pathName.match(/messages/)) {
-      var groupNum = pathName.replace(/[^0-9]/g, '');
-      $.ajax({
       type: 'GET',
       url: pathName,
-      data: {keyword: groupNum},
+      data: {keyword: messageId},
       dataType: 'json'
+    })
+    .done(function(messages) {
+      messages.forEach(function(message) {
+        var html = buildHTML(message);
+        $('.messages').append(html)
       })
-      .done(function(messages) {
-        var messageCount = 0;
-        messages.forEach(function(message) {
-          messageCount += 1;
-        })
-        if (messageCount !== $('.message').length) {
-          $('.messages').empty();
-          messages.forEach(function(message) {
-            var html = buildHTML(message);
-            $('.messages').append(html)
-          })
-          autoScrollToNewestMessage()
-        }
-      });
-    };
+      autoScrollToNewestMessage()
+    });
   }
-  setInterval(reloadMessages, 5000);
+  var pathName = location.pathname
+  if (pathName.match(/messages/)){
+    $('#new_message').on('submit', function(e){
+      e.preventDefault();
+      var formData = new FormData(this);
+      $.ajax({
+        url: pathName,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(data){
+         loadMessages.call()
+         $('.form__message').val('')
+         $('.form__submit').prop('disabled', false);
+      })
+      .fail(function(){
+        alert('送信に失敗しました');
+        $('.form__submit').prop('disabled', false);
+      })
+    })
+  }
+  setInterval(loadMessages, 5000);
 });

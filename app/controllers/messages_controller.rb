@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @messages = @group.messages.includes(:user)
     respond_to do |format|
       format.html
-      format.json {@latest_messages = @messages.where('group_id', params[:keyword])}
+      format.json {@latest_messages = @messages.where('id > ?', params[:keyword])}
     end
   end
 
@@ -22,10 +22,6 @@ class MessagesController < ApplicationController
       flash.now[:alert] = 'メッセージを入力してください。'
       render :index
     end
-  end
-
-  def reload
-    @groupMessages = Message.where("group_id", "%#{params[:keyword]}%").limit(1)
   end
 
   private
