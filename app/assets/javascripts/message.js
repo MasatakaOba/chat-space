@@ -54,7 +54,7 @@ $(function(){
       .done(function(data){
          loadMessages.call()
          $('.form__message').val('')
-         $('.form__mask').val('')
+         $('#message_image').val('')
          $('.form__submit').prop('disabled', false);
       })
       .fail(function(){
