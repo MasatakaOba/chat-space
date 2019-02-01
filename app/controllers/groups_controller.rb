@@ -3,12 +3,14 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @groupusers = []
   end
 
   def index
   end
 
   def edit
+    @groupusers = User.joins(:group_users).merge(GroupUser.where(group_id: params[:id])).all
   end
 
   def create

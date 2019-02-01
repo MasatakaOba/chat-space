@@ -23,11 +23,15 @@
       .chat-group-form__label チャットメンバー
     .chat-group-form__field--right
       #chat-group-users
+      .chat-group-user__name--member
+      - @groupusers << current_user if @groupusers.empty?
+      -$GroupmemberId = []
+      - @groupusers.each do |f|
         #chat-group-user-8.chat-group-user.clearfix.js-chat-member
-          = hidden_field_tag "group[user_ids][]", current_user.id
+          = hidden_field_tag "group[user_ids][]", f.id
+          - $GroupmemberId << f.id
           %p.chat-group-user__name
-            = current_user.name
-        .chat-group-user__name--member
+            = f.name
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
